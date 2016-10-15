@@ -9,47 +9,15 @@ $(document).ready(function(){
 	//$(".outer").text(info);
 	console.log(info);
 
-	/*$.ajax({
-		url:'http://challenge.code2040.org/api/register',
-		type: 'POST',
-		crossDomai"token" : "a14c730acf2c507c7462c5b711d88804",
-		"github" : "https://github.com/thenightowl00/Code2040-fellows-app"n: true,
-		data: JSON.stringify(info),
-		dataType: 'text'
-	}).done(function (data) {
-		$(".outer").text(data);
-		console.log(data)
-	});
-	*/
-
-
-	
+	//Step 1. Join Challenge
 	$.post("http://challenge.code2040.org/api/register", {"token" : "a14c730acf2c507c7462c5b711d88804",
 		"github" : "https://github.com/thenightowl00/Code2040-fellows-app"}).done(function () {
 			//alert("done!!!");
 		});
 
 	
-
-	
-	if ($.post("http://challenge.code2040.org/api/reverse", {"token" : "a14c730acf2c507c7462c5b711d88804"}))
-	{
-			console.log("get reverse string is done in an if statement!!!");
-			//console.log("The sting that needs to be reversed is: " + json[0].id);
-			/*
-			$.getJSON("http://challenge.code2040.org/api/reverse", function(data) {
-
-				var rstring = data;
-
-				$(".outer").append(rstring);
-			});
-			*/
-
-			//$.getJSON('http://challenge.code2040.org/api/reverse'), function (json) {
-			//	console.log("The sting that needs to be reversed is: " + json[0].id);
-			//}
-	}
-	
+	//Step 2. Reverse 
+	/*
 	$.post("http://challenge.code2040.org/api/reverse", {"token" : "a14c730acf2c507c7462c5b711d88804"}, function (json) {
 
 		console.log("The string that needs to be reversed is: " + json + " " + json[0] + json[3]);
@@ -62,8 +30,27 @@ $(document).ready(function(){
 		
 		$.post("http://challenge.code2040.org/api/reverse/validate", {"token" : "a14c730acf2c507c7462c5b711d88804", "string": reversedstring}); 
 
-	})
+	})*/
 
+	//Step 3. 
+	$.post("http://challenge.code2040.org/api/haystack", {"token" : "a14c730acf2c507c7462c5b711d88804"}, function (needle, haystack) {
+
+
+		console.log("The needle is " + needle.needle);
+		console.log("The haystack is" + needle.haystack);
+
+		var num;
+		$.each(needle.haystack, function (index, value) {
+			if (needle.needle == value)
+			{
+				num = index;
+			}
+		})
+		console.log(num);
+		
+		$.post("http://challenge.code2040.org/api/haystack/validate", {"token" : "a14c730acf2c507c7462c5b711d88804", "needle": num}); 
+
+	})
 
 
 

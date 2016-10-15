@@ -62,7 +62,7 @@ $(document).ready(function(){
 		console.log("The array is" + prefix.array);
 
 		var prefarr = [];
-		$.each(prefix.array, function (index, value) {
+		$.each(prefix.array, function (index, value) { //goes through each array element like a for loop
 			if (!value.startsWith(prefix.prefix))
 			{
 				 prefarr.push(value);
@@ -84,12 +84,12 @@ $(document).ready(function(){
 
 		d = new Date(datestamp.datestamp);
 		console.log(d);
-		var newtime = d.setSeconds(d.getSeconds() + datestamp.interval);
+		var newtime = d.setSeconds(d.getSeconds() + datestamp.interval); //adds the interval to the date.
 		console.log(newtime);
 		console.log(d);
 		var finalDate = d.toISOString();
 		console.log(finalDate);
-		finalDate = finalDate.replace('.000',''); //realizing this was the highlight of my 5am :)
+		finalDate = finalDate.replace('.000',''); //realizing this was the highlight of my 5am :) //it wasnt working initally because there was an extra . and three extra zeros
 		console.log(finalDate);
 
 		$.post("http://challenge.code2040.org/api/dating/validate", {"token" : "a14c730acf2c507c7462c5b711d88804", "datestamp" : finalDate});

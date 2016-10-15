@@ -33,9 +33,10 @@ $(document).ready(function(){
 	})*/
 
 	//Step 3. 
+	/*
 	$.post("http://challenge.code2040.org/api/haystack", {"token" : "a14c730acf2c507c7462c5b711d88804"}, function (needle, haystack) {
 
-
+		//var haystack; this can be done instead of passing it through the parameter
 		console.log("The needle is " + needle.needle);
 		console.log("The haystack is" + needle.haystack);
 
@@ -51,8 +52,25 @@ $(document).ready(function(){
 		$.post("http://challenge.code2040.org/api/haystack/validate", {"token" : "a14c730acf2c507c7462c5b711d88804", "needle": num}); 
 
 	})
+	*/
+	$.post("http://challenge.code2040.org/api/prefix", {"token" : "a14c730acf2c507c7462c5b711d88804"}, function (prefix, array) {
 
+		//var array; this can be done instead of passing it through the parameter
+		console.log("The prefix is " + prefix.prefix);
+		console.log("The array is" + prefix.array);
 
+		var prefarr = [];
+		$.each(prefix.array, function (index, value) {
+			if (!value.startsWith(prefix.prefix))
+			{
+				 prefarr.push(value);
+			}
+		})
+
+		console.log(prefarr)
+		
+		$.post("http://challenge.code2040.org/api/prefix/validate", {"token" : "a14c730acf2c507c7462c5b711d88804", "array" : prefarr});
+	})
 
 
 

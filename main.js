@@ -35,6 +35,7 @@ $(document).ready(function(){
 	if ($.post("http://challenge.code2040.org/api/reverse", {"token" : "a14c730acf2c507c7462c5b711d88804"}))
 	{
 			console.log("get reverse string is done in an if statement!!!");
+			//console.log("The sting that needs to be reversed is: " + json[0].id);
 			/*
 			$.getJSON("http://challenge.code2040.org/api/reverse", function(data) {
 
@@ -43,8 +44,28 @@ $(document).ready(function(){
 				$(".outer").append(rstring);
 			});
 			*/
+
+			//$.getJSON('http://challenge.code2040.org/api/reverse'), function (json) {
+			//	console.log("The sting that needs to be reversed is: " + json[0].id);
+			//}
 	}
 	
+	$.post("http://challenge.code2040.org/api/reverse", {"token" : "a14c730acf2c507c7462c5b711d88804"}, function (json) {
+
+		console.log("The string that needs to be reversed is: " + json + " " + json[0] + json[3]);
+
+		var rstring = json;
+
+		var reversedstring = rstring.split("").reverse().join("");
+
+		console.log(reversedstring);
+		
+		$.post("http://challenge.code2040.org/api/reverse/validate", {"token" : "a14c730acf2c507c7462c5b711d88804", "string": reversedstring}); 
+
+	})
+
+
+
 
 
 

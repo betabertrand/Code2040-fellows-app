@@ -17,10 +17,10 @@ $(document).ready(function(){
 
 	
 	//Step 2. Reverse 
-	/*
+	
 	$.post("http://challenge.code2040.org/api/reverse", {"token" : "a14c730acf2c507c7462c5b711d88804"}, function (json) {
 
-		console.log("The string that needs to be reversed is: " + json + " " + json[0] + json[3]);
+		console.log("The string that needs to be reversed is: " + json);
 
 		var rstring = json;
 
@@ -30,10 +30,10 @@ $(document).ready(function(){
 		
 		$.post("http://challenge.code2040.org/api/reverse/validate", {"token" : "a14c730acf2c507c7462c5b711d88804", "string": reversedstring}); 
 
-	})*/
+	})
 
 	//Step 3. 
-	/*
+	
 	$.post("http://challenge.code2040.org/api/haystack", {"token" : "a14c730acf2c507c7462c5b711d88804"}, function (needle, haystack) {
 
 		//var haystack; this can be done instead of passing it through the parameter
@@ -52,7 +52,9 @@ $(document).ready(function(){
 		$.post("http://challenge.code2040.org/api/haystack/validate", {"token" : "a14c730acf2c507c7462c5b711d88804", "needle": num}); 
 
 	})
-	*/
+	
+	//Step 4
+	
 	$.post("http://challenge.code2040.org/api/prefix", {"token" : "a14c730acf2c507c7462c5b711d88804"}, function (prefix, array) {
 
 		//var array; this can be done instead of passing it through the parameter
@@ -71,10 +73,30 @@ $(document).ready(function(){
 		
 		$.post("http://challenge.code2040.org/api/prefix/validate", {"token" : "a14c730acf2c507c7462c5b711d88804", "array" : prefarr});
 	})
+	
+
+	//step 5
+	$.post("http://challenge.code2040.org/api/dating", {"token" : "a14c730acf2c507c7462c5b711d88804"}, function (datestamp, interval) {
+
+		//var interval; this can be done instead of passing it through the parameter
+		console.log("The datestamp is " + datestamp.datestamp);
+		console.log("The interval of seconds is " + datestamp.interval);
+
+		d = new Date(datestamp.datestamp);
+		console.log(d);
+		var newtime = d.setSeconds(d.getSeconds() + datestamp.interval);
+		console.log(newtime);
+		console.log(d);
+		var finalDate = d.toISOString();
+		console.log(finalDate);
+		finalDate = finalDate.replace('.000',''); //realizing this was the highlight of my 5am :)
+		console.log(finalDate);
+
+		$.post("http://challenge.code2040.org/api/dating/validate", {"token" : "a14c730acf2c507c7462c5b711d88804", "datestamp" : finalDate});
+	})
 
 
-
-
+	//throughout there are a few extra variables then needed and alot of consol.log's. I was testing.
 
 
 
